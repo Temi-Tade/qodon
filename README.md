@@ -6,22 +6,30 @@
 
 ## ✨ Features
 * **Zero Overhead:** Built in standard C for maximum execution velocity.
-* **Instant Evaluation:** Passes the genetic sequence directly as an argument—no heavy file parsing required.
+* **Instant Evaluation:** Passes the genetic sequence directly as an argument.
 * **Core Bio-Utilities:** Fast sequence transcription, complementing, and metric calculations.
 
-## 🚀 Installation & Compilation
+## 🚀 Installation
+You can install `qodon` directly or build from the source code.
 
-Compile `qdn` natively using any modern C compiler (`gcc` or `clang`):
+### 1. Direct Install (Linux, x86_64)
+Install precompiled binaries by running:
+```bash
+curl -L -o mrg https://github.com/Temi-Tade/qodon/releases/download/v0.1.0/qdn && chmod +x mrg && sudo mv mrg /usr/local/bin/
+```
+
+### 2. Build from source
+Compile `qdn` natively using any modern C compiler (`gcc` or `clang` required):
 
 ```bash
 # Clone the repository
-git clone https://github.com
+git clone https://github.com/Temi-Tade/qodon
 cd qodon
 
 # Compile the binary with optimizations
 gcc -O3 main.c -o qdn
 
-# (Optional) Move to your local bin to run it globally
+# Move to your local bin to run it globally
 sudo mv qdn /usr/local/bin/
 ```
 
