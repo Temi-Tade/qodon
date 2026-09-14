@@ -15,7 +15,7 @@ You can install `qodon` directly or build from the source code.
 ### 1. Direct Install (Linux, x86_64)
 Install precompiled binaries by running:
 ```bash
-curl -L -o mrg https://github.com/Temi-Tade/qodon/releases/download/v0.1.0/qdn && chmod +x mrg && sudo mv mrg /usr/local/bin/
+curl -L -o qdn https://github.com/Temi-Tade/qodon/releases/download/v0.1.0/qdn && chmod +x qdn && sudo mv qdn /usr/local/bin/
 ```
 
 ### 2. Build from source
