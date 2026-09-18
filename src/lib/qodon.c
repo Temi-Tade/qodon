@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-
-int validate(char template[], int is_transcribing, int is_rt);
-void get_complementary_sequence(char template[], char complement[], int is_transcribing, int is_rt);
-void handle_complement(char input[], int is_transcribing, int is_rt);
-void get_base_length(char template[]);
-void transcribe(char template[]);
-void reverse(char forward[]);
-void get_gc_content(char sequence[]);
+#include "qodon.h"
 
 int validate(char template[], int is_transcribing, int is_rt) {
     size_t length = strlen(template);
@@ -67,24 +58,24 @@ void handle_complement(char input[], int is_transcribing, int is_rt) {
 }
 
 void get_base_length(char template[]) {
-    printf("%lubp\n", strlen(template));
+    printf("%lubps\n", strlen(template));
 }
 
 void reverse(char forward[]) {
     size_t length = strlen(forward);
     char reverse[length];
 
-    printf("5' %s 3' (FWD)\n", forward);
+    printf("%s (FWD)\n", forward);
 
     for (size_t i = 0; i < length; i++) {
         reverse[i] = forward[length - (i + 1)];
     }
 
     reverse[length] = '\0';
-    printf("3' %s 5' (REV)\n", reverse);
+    printf("%s (REV)\n", reverse);
 }
 
-void get_gc_content(char sequence[]) {
+float get_gc_content(char sequence[]) {
     size_t length = strlen(sequence);
     float gc_count = 0;
 
@@ -94,5 +85,8 @@ void get_gc_content(char sequence[]) {
         }
     }
 
-    printf("%.2f%%\n", (gc_count / (float) length) * 100);
+    float gc_content = (gc_count / (float) length) * 100;
+
+    // printf("%.2f%%\n", gc_content);
+    return gc_content;
 }
