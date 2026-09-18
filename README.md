@@ -112,7 +112,13 @@ qdn -c ATGC
 
 ```bash
 qdn -t GATTACA
-# Output: GAUUACA
+# Output: CUAAUGU
+```
+
+**Reverse Transcribe RNA to DNA**
+```bash
+qdn -u UUAGC
+# Output: AATCG
 ```
 
 **Calculate GC Content:** 
