@@ -33,7 +33,7 @@ git clone https://github.com/Temi-Tade/qodon.git
 cd qodon
 
 # Compile the binary with optimizations
-gcc -O3 main.c -o qdn
+gcc src/main.c -O3 src/lib/qodon.c src/lib/shell.c -o bin/qdn
 
 # Move to your local bin to run it globally
 sudo mv qdn /usr/local/bin/
