@@ -4,6 +4,7 @@
 #include <signal.h>
 #include "qodon.h"
 
+void run_visual(char template[]);
 void run_shell_cmd(char *cmds[], char template[]);
 void parse_shell_cmd(char cmd[], char template[]);
 void get_shell_input(char template[]);

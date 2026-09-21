@@ -1,6 +1,31 @@
 #include "shell.h"
 #include "qodon.h"
 
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define CYAN    "\033[36m"
+#define MAGENTA "\033[35m"
+
+#define BOLD    "\033[1m"
+#define RESET   "\033[0m"
+
+void run_visual(char template[]) {
+    size_t length = strlen(template);
+
+    for (size_t i = 0; i < length; i++) {
+        if (template[i] == 'A') printf(GREEN "%c" RESET, template[i]);
+        if (template[i] == 'T') printf(CYAN "%c" RESET, template[i]);
+        if (template[i] == 'G') printf(YELLOW "%c" RESET, template[i]);
+        if (template[i] == 'C') printf(MAGENTA "%c" RESET, template[i]);
+        if (template[i] == 'U') printf(CYAN "%c" RESET, template[i]);
+    }
+
+    printf("\n");
+    get_aa(template);
+}
+
 void run_shell_cmd(char *cmds[], char template[]) {
     if (strcmp(cmds[0], "exit") == 0) {
         printf("Exiting qodon shell...");
@@ -17,6 +42,12 @@ void run_shell_cmd(char *cmds[], char template[]) {
         handle_complement(template, 0, 1);
     } else if (strcmp(cmds[0], "gc") == 0) {
         printf("%.2f%%\n", get_gc_content(template));
+    } else if (strcmp(cmds[0], "clear") == 0) {
+        printf("\e[H\e[2J\e[3J");
+    } else if (strcmp(cmds[0], "seq") == 0) {
+        printf("%s\n", template);
+    } else if (strcmp(cmds[0], "vis") == 0) {
+        run_visual(template);
     } else {
         fprintf(stderr, "'%s': Invalid shell command\n", cmds[0]);
     }

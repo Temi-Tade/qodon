@@ -87,6 +87,57 @@ float get_gc_content(char sequence[]) {
 
     float gc_content = (gc_count / (float) length) * 100;
 
-    // printf("%.2f%%\n", gc_content);
     return gc_content;
+}
+
+void get_aa(char dna[]) {
+    FILE *fptr = fopen("codons.txt", "r");
+    if (fptr == NULL) return;
+
+    int ch = 0;
+    int count = 0;
+    int read = 0;
+    size_t length = strlen(dna);
+
+    char query_codon[4];
+    char target_codon[4];
+    char rna[length];
+    char buffer[1436];
+
+    get_complementary_sequence(dna, rna, 1, 0);
+
+    while (read < length) {
+        while ((ch = fgetc(fptr)) != EOF) {
+            if (count == 3) {
+                target_codon[count] = '\0'; // terminate codon sequence
+                query_codon[count] = '\0'; // terminate codon sequence
+                // if ()
+                printf("%s %s\n", target_codon, query_codon);
+                if (read >= length) break;
+    
+                while ((ch = fgetc(fptr)) != '\n' && ch != EOF) {
+                    // Do nothing, ch++;
+                    // Go to next line
+                }
+    
+                count = 0; // reset codon count
+                continue; // Go to the next iteration of the main loop
+            }
+            
+            target_codon[count] = ch;
+            query_codon[count] = rna[read];
+            count++;
+            // read++;
+            // Process normal characters here
+            
+        }
+
+        read++;
+    }
+
+    // buffer[read] = '\0';
+
+    // printf("%s\n", buffer);
+
+    fclose(fptr);
 }
