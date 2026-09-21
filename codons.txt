@@ -1,0 +1,64 @@
+GCU:Alanine:Ala:A
+GCC:Alanine:Ala:A
+GCA:Alanine:Ala:A
+GCG:Alanine:Ala:A
+CGU:Arginine:Arg:R
+CGC:Arginine:Arg:R
+CGA:Arginine:Arg:R
+CGG:Arginine:Arg:R
+AGA:Arginine:Arg:R
+AGG:Arginine:Arg:R
+AAU:Asparagine:Asn:N
+AAC:Asparagine:Asn:N
+GAU:Aspartic Acid:Asp:D
+GAC:Aspartic Acid:Asp:D
+UGU:Cysteine:Cys:C
+UGC:Cysteine:Cys:C
+GAA:Glutamic Acid:Glu:E
+GAG:Glutamic Acid:Glu:E
+CAA:Glutamine:Gln:Q
+CAG:Glutamine:Gln:Q
+GGU:Glycine:Gly:G
+GGC:Glycine:Gly:G
+GGA:Glycine:Gly:G
+GGG:Glycine:Gly:G
+CAU:Histidine:His:H
+CAC:Histidine:His:H
+AUU:Isoleucine:Ile:I
+AUC:Isoleucine:Ile:I
+AUA:Isoleucine:Ile:I
+UUA:Leucine:Leu:L
+UUG:Leucine:Leu:L
+CUU:Leucine:Leu:L
+CUC:Leucine:Leu:L
+CUA:Leucine:Leu:L
+CUG:Leucine:Leu:L
+AAA:Lysine:Lys:K
+AAG:Lysine:Lys:K
+AUG:Methionine:Met:M
+UUU:Phenylalanine:Phe:F
+UUC:Phenylalanine:Phe:F
+CCU:Proline:Pro:P
+CCC:Proline:Pro:P
+CCA:Proline:Pro:P
+CCG:Proline:Pro:P
+UCU:Serine:Ser:S
+UCC:Serine:Ser:S
+UCA:Serine:Ser:S
+UCG:Serine:Ser:S
+AGU:Serine:Ser:S
+AGC:Serine:Ser:S
+ACU:Threonine:Thr:T
+ACC:Threonine:Thr:T
+ACA:Threonine:Thr:T
+ACG:Threonine:Thr:T
+UGG:Tryptophan:Trp:W
+UAU:Tyrosine:Tyr:Y
+UAC:Tyrosine:Tyr:Y
+GUU:Valine:Val:V
+GUC:Valine:Val:V
+GUA:Valine:Val:V
+GUG:Valine:Val:V
+UAA:Stop Codon:Stop:Stop
+UAG:Stop Codon:Stop:Stop
+UGA:Stop Codon:Stop:Stop

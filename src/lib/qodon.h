@@ -14,5 +14,6 @@ void get_base_length(char template[]);
 void transcribe(char template[]);
 void reverse(char forward[]);
 float get_gc_content(char sequence[]);
+void get_aa(char dna[]);
 
 #endif
