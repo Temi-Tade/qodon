@@ -15,5 +15,6 @@ void transcribe(char template[]);
 void reverse(char forward[]);
 float get_gc_content(char sequence[]);
 void get_aa(char dna[]);
+void print_codon_list();
 
 #endif

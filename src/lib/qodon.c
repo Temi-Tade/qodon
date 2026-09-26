@@ -92,52 +92,78 @@ float get_gc_content(char sequence[]) {
 
 void get_aa(char dna[]) {
     FILE *fptr = fopen("codons.txt", "r");
-    if (fptr == NULL) return;
-
-    int ch = 0;
-    int count = 0;
-    int read = 0;
-    size_t length = strlen(dna);
-
-    char query_codon[4];
-    char target_codon[4];
-    char rna[length];
-    char buffer[1436];
-
-    get_complementary_sequence(dna, rna, 1, 0);
-
-    while (read < length) {
-        while ((ch = fgetc(fptr)) != EOF) {
-            if (count == 3) {
-                target_codon[count] = '\0'; // terminate codon sequence
-                query_codon[count] = '\0'; // terminate codon sequence
-                // if ()
-                printf("%s %s\n", target_codon, query_codon);
-                if (read >= length) break;
-    
-                while ((ch = fgetc(fptr)) != '\n' && ch != EOF) {
-                    // Do nothing, ch++;
-                    // Go to next line
-                }
-    
-                count = 0; // reset codon count
-                continue; // Go to the next iteration of the main loop
-            }
-            
-            target_codon[count] = ch;
-            query_codon[count] = rna[read];
-            count++;
-            // read++;
-            // Process normal characters here
-            
-        }
-
-        read++;
+    if (fptr == NULL) {
+        printf("Error opening codons.txt\n");
+        return;
     }
 
-    // buffer[read] = '\0';
+    size_t length = strlen(dna);
+    char rna[length];
+    char aa[(int) ((length / 3) + 1)];
+    get_complementary_sequence(dna, rna, 1, 0);
 
-    // printf("%s\n", buffer);
+    // Process RNA in chunks of 3 (codons)
+    for (size_t i = 0; i + 2 < length; i += 3) {
+        char query_codon[4];
+        query_codon[0] = rna[i];
+        query_codon[1] = rna[i + 1];
+        query_codon[2] = rna[i + 2];
+        query_codon[3] = '\0';
+
+        if (strcmp(query_codon, "UGA") == 0 || strcmp(query_codon, "UAA") == 0 || strcmp(query_codon, "UAG") == 0) {
+            break; // stop codon detected
+        }
+
+        // Rewind file pointer to the beginning for each codon search
+        rewind(fptr);
+
+        char line[100];
+        int found = 0;
+
+        // Read the file line by line
+        while (fgets(line, sizeof(line), fptr) != NULL) {
+            char target_codon[4];
+            // Assuming the line starts with the codon (e.g., "UUU:Phenylalanine:Phe:F")
+            sscanf(line, "%3s", target_codon);
+
+            if (strcmp(query_codon, target_codon) == 0) {
+                // printf("Match found! Query: %s -> Line: %s", query_codon, line);
+                line[strcspn(line, "\n")] = 0; // remove \n, \n is the last char of the line
+                aa[(int) i/3] = line[strlen(line) - 1]; // move one back to get last char, which is the symbol
+                found = 1;
+                break;
+            }
+        }
+       
+        if (!found) {
+            printf("Codon %s not found in file.\n", query_codon);
+        }
+    }
+    
+    aa[(int) ((length / 3) + 1)] = '\0'; // terminate amino acid buffer
+    printf("%s\n", aa);
 
     fclose(fptr);
+}
+
+void print_codon_list() {
+    FILE *fptr;
+
+    fptr = fopen("codons.txt", "r");
+
+    if (fptr == NULL) {
+        printf("An error occured. Could not open codons.txt.");
+        return;
+    }
+
+    int c;
+    char buffer[1250];
+    buffer[1245] = '\0';
+
+    while((c = fgetc(fptr)) != EOF) {
+        printf("%c", c);
+    }
+
+    fclose(fptr);
+    // printf("\n %ld %ld", strlen(buffer), sizeof(buffer));
 }

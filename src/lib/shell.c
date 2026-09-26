@@ -1,28 +1,13 @@
 #include "shell.h"
 #include "qodon.h"
 
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define CYAN    "\033[36m"
-#define MAGENTA "\033[35m"
-
-#define BOLD    "\033[1m"
-#define RESET   "\033[0m"
-
-void run_visual(char template[]) {
+void run_dogma(char template[]) {
     size_t length = strlen(template);
-
-    for (size_t i = 0; i < length; i++) {
-        if (template[i] == 'A') printf(GREEN "%c" RESET, template[i]);
-        if (template[i] == 'T') printf(CYAN "%c" RESET, template[i]);
-        if (template[i] == 'G') printf(YELLOW "%c" RESET, template[i]);
-        if (template[i] == 'C') printf(MAGENTA "%c" RESET, template[i]);
-        if (template[i] == 'U') printf(CYAN "%c" RESET, template[i]);
-    }
-
-    printf("\n");
+    char rna[length];
+    get_complementary_sequence(template, rna, 1, 0);
+    printf("DNA: %s\n", template);
+    printf("RNA: %s\n", rna);
+    printf("AA: ");
     get_aa(template);
 }
 
@@ -46,9 +31,13 @@ void run_shell_cmd(char *cmds[], char template[]) {
         printf("\e[H\e[2J\e[3J");
     } else if (strcmp(cmds[0], "seq") == 0) {
         printf("%s\n", template);
-    } else if (strcmp(cmds[0], "vis") == 0) {
-        run_visual(template);
-    } else {
+    } else if (strcmp(cmds[0], "sim") == 0) {
+        run_dogma(template);
+    } else if (strcmp(cmds[0], "aa") == 0) {
+	    get_aa(template);
+	} else if (strcmp(cmds[0], "list-aa") == 0) {
+	    print_codon_list();
+	} else {
         fprintf(stderr, "'%s': Invalid shell command\n", cmds[0]);
     }
 }
@@ -56,7 +45,7 @@ void run_shell_cmd(char *cmds[], char template[]) {
 void parse_shell_cmd(char cmd[], char template[]) {
     char *subcommands[MAX_SHELL_ARGS];
     int count = 0;
-    
+
     char *token = strtok(cmd, " ");
 
     while (token != NULL && count < MAX_SHELL_ARGS) {
@@ -68,7 +57,7 @@ void parse_shell_cmd(char cmd[], char template[]) {
     run_shell_cmd(subcommands, template);
 }
 
-void get_shell_input(char template[]) { 
+void get_shell_input(char template[]) {
     // get shell subcommands
     char command[MAX_CMD_LENGTH];
 
@@ -79,7 +68,7 @@ void get_shell_input(char template[]) {
             get_shell_input(template);
             return;
         }
-        
+
         command[strcspn(command, "\n")] = '\0';
         parse_shell_cmd(command, template);
     } else {
