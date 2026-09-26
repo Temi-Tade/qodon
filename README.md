@@ -98,6 +98,7 @@ qdn [flag] <SEQUENCE>
 | **-l** | len | Length | Computes the total length of the sequence |
 | **-g** | gc | GC-Content | Calculates the GC content percentage |
 | **-i** |  | Shell Mode | Enter interactive shell |
+| **-h** | h | Help | Print help |
 
 ### 💻 One-off Examples
 
