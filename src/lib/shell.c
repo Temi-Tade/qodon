@@ -33,12 +33,14 @@ void run_shell_cmd(char *cmds[], char template[]) {
         printf("%s\n", template);
     } else if (strcmp(cmds[0], "sim") == 0) {
         run_dogma(template);
-    } else if (strcmp(cmds[0], "aa") == 0) {
+    } else if (strcmp(cmds[0], "tl") == 0) {
 	    get_aa(template);
 	} else if (strcmp(cmds[0], "list-aa") == 0) {
 	    print_codon_list();
+	} else if (strcmp(cmds[0], "help") == 0 || strcmp(cmds[0], "h") == 0) {
+	    print_shell_help(template);
 	} else {
-        fprintf(stderr, "'%s': Invalid shell command\n", cmds[0]);
+        fprintf(stderr, "'%s': Invalid shell command. Use 'h' or 'help' to view available shell commands.\n", cmds[0]);
     }
 }
 
@@ -64,7 +66,7 @@ void get_shell_input(char template[]) {
     printf("qdn> ");
     if (fgets(command, MAX_CMD_LENGTH, stdin) != NULL) {
         if (strcmp(command, "\n") == 0 || strcmp(command, " ") == 0) {
-            fprintf(stderr, "'%s': Invalid shell command\n", command);
+            fprintf(stderr, "'%s': Invalid shell command. Use 'h' or 'help' to view available shell commands.\n", command);
             get_shell_input(template);
             return;
         }
@@ -85,4 +87,23 @@ void launch_shell(char template[]) {
     printf("Template sequence: %s \nLength: %ldbps \nGC content: %.2f%%\n", template, length, get_gc_content(template));
 
     get_shell_input(template);
+}
+
+void print_shell_help(const char active_sequence[]) {
+    printf("\n--- qodon Interactive Context Shell Help ---\n");
+    printf("Active Sequence: %s\n\n", active_sequence);
+    printf("Available Commands:\n");
+    printf("  seq       Show the active sequence\n");
+    printf("  cmp       Complement the sequence\n");
+    printf("  tr        Transcribe to RNA\n");
+    printf("  tl        Translate the RNA sequence into amino acids\n");
+    printf("  sim       Simulate the central dogma. DNA -> RNA -> AA\n");
+    printf("  rt        Reverse transcribe to DNA\n");
+    printf("  rev       Reverse the sequence direction\n");
+    printf("  len       Get total nucleotide length\n");
+    printf("  gc        Calculate GC content percentage\n");
+    printf("  list-aa   Print reference list of all codons and their amino acids\n");
+    printf("  clear     Clear the qodon shell\n");
+    printf("  h / help  Display this help panel\n");
+    printf("  exit      Close the interactive shell session\n\n");
 }

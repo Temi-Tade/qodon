@@ -167,3 +167,20 @@ void print_codon_list() {
     fclose(fptr);
     // printf("\n %ld %ld", strlen(buffer), sizeof(buffer));
 }
+
+void print_cli_help() {
+    printf("qodon (qdn) - Ultra-fast genomic tool\n");
+    printf("Usage: qdn [flag] <SEQUENCE>\n\n");
+    printf("Core Flags:\n");
+    printf("  -c    Complement (generates complementary strand)\n");
+    printf("  -t    Transcribe (DNA -> RNA)\n");
+    printf("  -u    Reverse Transcribe (RNA -> DNA)\n");
+    printf("  -l    Length (computes total length)\n");
+    printf("  -g    GC-Content (calculates GC percentage)\n");
+    printf("  -a    Amino Acids (translates to amino acid sequence)\n");
+    printf("  -r    Reverse sequence direction\n");
+    printf("  -s    Simulate the central dogma. DNA -> RNA -> AA\n");
+    printf("  -i    Shell Mode (enters the stateful interactive shell)\n\n");
+    printf("Options:\n");
+    printf("  -h   Show this help menu\n");
+}
