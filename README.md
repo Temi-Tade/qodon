@@ -78,6 +78,7 @@ Inside the shell, execute operations directly on the initialized sequence:
 | **rev** | Reverse | Reverses the sequence direction |
 | **len** | Length | Computes the total length of the sequence |
 | **gc** | GC-Content | Calculates the exact GC content percentage |
+| **h, help** | Help | Show available shell commands |
 | **exit** | Exit | Closes the interactive shell session |
 
 ### 🛠️ Mode 2: Quick Terminal Flags

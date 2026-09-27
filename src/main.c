@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        if (argc == 2 && argv[1] == "-h") {
+        if (argc == 2 && strcmp(argv[1], "-h") == 0) {
             print_cli_help();
             return 0;
         }

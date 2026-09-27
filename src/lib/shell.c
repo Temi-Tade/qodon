@@ -89,7 +89,7 @@ void launch_shell(char template[]) {
     get_shell_input(template);
 }
 
-void print_shell_help(const char active_sequence[]) {
+void print_shell_help(char active_sequence[]) {
     printf("\n--- qodon Interactive Context Shell Help ---\n");
     printf("Active Sequence: %s\n\n", active_sequence);
     printf("Available Commands:\n");
