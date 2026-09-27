@@ -137,6 +137,9 @@ qdn -l ATGCATGC
 # Output: 8bps
 ```
 
+## Note:
+> In order to run the translation workflow (RNA to Amino Acid sequence), download and place the `codons.txt` file in your working directory.
+
 ### 📄 License
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.

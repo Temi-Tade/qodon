@@ -99,7 +99,7 @@ void get_aa(char dna[]) {
 
     size_t length = strlen(dna);
     char rna[length];
-    char aa[(int) ((length / 3) + 1)];
+    char aa[(int) ((length / 3))];
     get_complementary_sequence(dna, rna, 1, 0);
 
     // Process RNA in chunks of 3 (codons)
@@ -140,7 +140,7 @@ void get_aa(char dna[]) {
         }
     }
     
-    aa[(int) ((length / 3) + 1)] = '\0'; // terminate amino acid buffer
+    aa[(int) ((length / 3))] = '\0'; // terminate amino acid buffer
     printf("%s\n", aa);
 
     fclose(fptr);
@@ -157,8 +157,6 @@ void print_codon_list() {
     }
 
     int c;
-    char buffer[1250];
-    buffer[1245] = '\0';
 
     while((c = fgetc(fptr)) != EOF) {
         printf("%c", c);
