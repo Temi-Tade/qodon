@@ -127,7 +127,6 @@ void get_aa(char dna[]) {
             sscanf(line, "%3s", target_codon);
 
             if (strcmp(query_codon, target_codon) == 0) {
-                // printf("Match found! Query: %s -> Line: %s", query_codon, line);
                 line[strcspn(line, "\n")] = 0; // remove \n, \n is the last char of the line
                 aa[(int) i/3] = line[strlen(line) - 1]; // move one back to get last char, which is the symbol
                 found = 1;
@@ -163,7 +162,6 @@ void print_codon_list() {
     }
 
     fclose(fptr);
-    // printf("\n %ld %ld", strlen(buffer), sizeof(buffer));
 }
 
 void print_cli_help() {
